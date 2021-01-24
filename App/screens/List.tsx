@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FlatList, TouchableOpacity, View, Text, StyleSheet } from "react-native";
 import { ListViewNavigationProp } from '../config/navigation'
-import DATA from '../data/data';
 import ListItem from './ListItem'
 
   // const ListItem = ({item, onPress}) => {
@@ -37,7 +36,8 @@ import ListItem from './ListItem'
               onPress = {() => {
                 navigation.navigate('Detail', {
                   //item: item
-                  itemId: item.id
+                  itemId: item.id,
+                  title: item.title
                 })
                 console.log("ID:", item.id)
             }

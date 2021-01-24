@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, useRoute } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
@@ -8,8 +8,8 @@ import ListView from '../screens/List';
 import Detail from '../screens/Detail'
 
 type ProductStackParamList = {
-  List: undefined
-  Detail: { itemId: number };
+  List: {title: string}
+  Detail: { itemId: number, title: string };
 };
 
 export type DetailViewRouteProp = RouteProp<ProductStackParamList, "Detail">
@@ -21,6 +21,9 @@ export type ListViewNavigationProp = StackNavigationProp<
 
 const ProductStack = createStackNavigator();
 const ProductsStackScreen = () => {
+
+
+
     return(
     <ProductStack.Navigator>
       <ProductStack.Screen 
@@ -34,9 +37,10 @@ const ProductsStackScreen = () => {
       name = "Detail" 
       component = {Detail} 
       options = {({ route }) => {
+
+        console.log("Route:", route.params)
         return {
-            //headerTitle: `${route.params}`,
-            headerTitle: "Detail",
+            headerTitle: `${route?.params?.title}`,
             headerBackTitle: "Back"
         }
       }

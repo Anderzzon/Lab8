@@ -1,20 +1,9 @@
 import React from "react";
 import { TouchableOpacity, View, Text, StyleSheet, Image } from "react-native";
 
-// export default ({item, onPress}) => {
-
-//     return (
-//       <TouchableOpacity onPress = {onPress}>
-//         <View style = {styles.listItem}    >
-//           <Text>{item?.title}</Text>
-//         </View>
-//       </TouchableOpacity>
-//     )
-//   }
-
 export default function ListItem({item, onPress}: {
     item:ListItem,
-    onPress:(itemId:number)=>void
+    onPress:(itemId:number, title: string)=>void
 }) {
 
     const sale = () => {
@@ -29,7 +18,7 @@ export default function ListItem({item, onPress}: {
         }
     }
         return (
-      <TouchableOpacity onPress = {() => onPress(item.id)}>
+      <TouchableOpacity onPress = {() => onPress(item.id, item.title)}>
         <View style = {styles.listItem}>
             <Image style = {styles.image} source={{ uri: item?.image }} />
             <View style = {styles.infoContainer}>

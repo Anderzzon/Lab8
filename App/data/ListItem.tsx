@@ -6,3 +6,7 @@ interface ListItem {
     description: string;
     category: string;
     }
+
+interface Object {
+    title: string;
+}

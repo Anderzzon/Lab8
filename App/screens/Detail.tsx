@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Text, SafeAreaView, StyleSheet, View, Image, Button } from "react-native";
-import { DetailViewRouteProp } from '../config/navigation'
+import navigation, { DetailViewRouteProp } from '../config/navigation'
 
 export default ({ route }: { route: DetailViewRouteProp }) => {
 
@@ -15,7 +15,9 @@ const DetailView = ({ route }: { route: DetailViewRouteProp }) => {
 
   const [product, setProduct] = useState<ListItem | null>(null);
 
-  const { itemId } = route.params
+  //const { itemId } = route.params
+  const itemId = route.params.itemId
+  const title = route.params.title
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${itemId}`)
@@ -48,7 +50,10 @@ const DetailView = ({ route }: { route: DetailViewRouteProp }) => {
         </View>
         <Button
         title = "Add to Cart"
-        onPress = {() => console.log("Added to cart")}
+        onPress = {() => {
+          console.log("Added to cart")
+          console.log("Params title", route.params.title)
+      }}
         />
       </View>
       
@@ -85,8 +90,9 @@ const DetailView = ({ route }: { route: DetailViewRouteProp }) => {
   
       title: {
           fontWeight: 'bold',
-          fontSize: 20,
-          margin: 10,
+          fontSize: 21,
+          marginTop: 10,
+          marginBottom: 10,
       },
   
       price: {

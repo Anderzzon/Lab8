@@ -30,7 +30,7 @@ const ProductsStackScreen = () => {
       name = "ListView" 
       component = {ListView} 
       options = {{
-        headerTitle: 'List of activities'
+        headerTitle: 'Catalog'
       }}
       />
       <ProductStack.Screen 

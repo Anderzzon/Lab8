@@ -6,7 +6,7 @@ export default function ListItem({item, onPress}: {
     onPress:(itemId:number, title: string)=>void
 }) {
 
-    const sale = () => {
+    const calculatePrice = () => {
         if (item?.price > 50 ) {
             return (
                 <Text style = {{...styles.price, color: 'green'}}>${(item?.price * 0.8).toFixed(2)}</Text>
@@ -23,7 +23,7 @@ export default function ListItem({item, onPress}: {
             <Image style = {styles.image} source={{ uri: item?.image }} />
             <View style = {styles.infoContainer}>
             <Text style= {styles.title}>{item?.title}</Text>
-            {sale()}
+            {calculatePrice()}
             </View>
           
         </View>

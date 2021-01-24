@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Text, SafeAreaView, StyleSheet, View, Image, Button } from "react-native";
-import navigation, { DetailViewRouteProp } from '../config/navigation'
+import { DetailViewRouteProp } from '../config/navigation'
 
 export default ({ route }: { route: DetailViewRouteProp }) => {
 
@@ -15,9 +15,7 @@ const DetailView = ({ route }: { route: DetailViewRouteProp }) => {
 
   const [product, setProduct] = useState<ListItem | null>(null);
 
-  //const { itemId } = route.params
   const itemId = route.params.itemId
-  const title = route.params.title
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${itemId}`)
@@ -26,7 +24,7 @@ const DetailView = ({ route }: { route: DetailViewRouteProp }) => {
     .catch((error) => console.log(error))
   }, [])
 
-  const sale = () => {
+  const calculatePrice = () => {
     if (product && product?.price > 50 ) {
         return (
             <Text style = {{...styles.price, color: 'green'}}>${(product?.price * 0.8).toFixed(2)}</Text>
@@ -43,7 +41,7 @@ const DetailView = ({ route }: { route: DetailViewRouteProp }) => {
         <Image style = {styles.image} source={{ uri: product?.image }} />
         <View style = {styles.infoContainer}>
           <Text style= {styles.title}>{product?.title} </Text>
-          {sale()}
+          {calculatePrice()}
           <Text style = {{...styles.text, fontWeight: 'bold'}}>Description</Text>
           <Text style = {styles.text}>{product?.description}</Text>
           <Text style = {{...styles.text, color: 'grey', marginTop: 10, marginBottom: 20}}>Category: {product?.category}</Text>
@@ -64,15 +62,11 @@ const DetailView = ({ route }: { route: DetailViewRouteProp }) => {
 
         container: {
       flex: 1,
-      //backgroundColor: '#fff',
       alignItems: 'center',
-      //justifyContent: 'center',
     },
 
     detailItem: {
-      //flexDirection: 'row',
         width: '100%',
-        //alignContent: 'flex-start',
         padding: 20,
         margin: 5,
       },

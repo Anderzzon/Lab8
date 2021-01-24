@@ -1,17 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { FlatList, TouchableOpacity, View, Text, StyleSheet } from "react-native";
+import { FlatList, View, Text, StyleSheet } from "react-native";
 import { ListViewNavigationProp } from '../config/navigation'
 import ListItem from './ListItem'
-
-  // const ListItem = ({item, onPress}) => {
-  //   return (
-  //     <TouchableOpacity onPress = {onPress}>
-  //       <View style = {styles.listItem}    >
-  //         <Text>{title}</Text>
-  //       </View>
-  //     </TouchableOpacity>
-  //   )
-  // }
 
   const Separator = () => <View style={styles.separator} />;
   
@@ -53,21 +43,6 @@ import ListItem from './ListItem'
   }
 
   const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  
-    listItem: {
-      //width: '100%',
-      alignContent: 'flex-start',
-      padding: 20,
-      margin: 5,
-      borderColor: 'grey',
-      borderWidth: 2
-    },
   
     activityList: {
       width: '100%',

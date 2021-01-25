@@ -19,7 +19,7 @@ export type ListViewNavigationProp = StackNavigationProp<
     "List"
 >
 
-const ProductStack = createStackNavigator();
+const ProductStack = createStackNavigator<ProductStackParamList>();
 const ProductsStackScreen = () => {
 
 
@@ -27,7 +27,7 @@ const ProductsStackScreen = () => {
     return(
     <ProductStack.Navigator>
       <ProductStack.Screen 
-      name = "ListView" 
+      name = "List" 
       component = {ListView} 
       options = {{
         headerTitle: 'Catalog'
@@ -38,7 +38,6 @@ const ProductsStackScreen = () => {
       component = {Detail} 
       options = {({ route }) => {
 
-        console.log("Route:", route.params)
         return {
             headerTitle: `${route?.params?.title}`,
             headerBackTitle: "Back"
